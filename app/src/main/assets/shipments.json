@@ -1,0 +1,20 @@
+[
+  {
+    "origin": "Jakarta",
+    "destination": "Bekasi",
+    "price": "1000000",
+    "loadingDate": "2022-06-06T20:08:00.000Z"
+  },
+  {
+    "origin": "Surabaya",
+    "destination": "Sidoarjo",
+    "price": "2000000",
+    "loadingDate": "2022-06-07T20:08:00.000Z"
+  },
+  {
+    "origin": "Semarang",
+    "destination": "Jakarta",
+    "price": "5000000",
+    "loadingDate": "2022-06-08T20:08:00.000Z"
+  }
+]

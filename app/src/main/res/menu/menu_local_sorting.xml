@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_date_nearest"
+        android:title="@string/title_menu_date_nearest"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_date_farthest"
+        android:title="@string/title_menu_date_farthest"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_price_lowest"
+        android:title="@string/title_menu_price_lowest"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_price_highest"
+        android:title="@string/title_menu_price_highest"
+        app:showAsAction="never" />
+</menu>

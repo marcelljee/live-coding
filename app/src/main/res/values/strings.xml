@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Live Coding</string>
+
+    <string name="title_activity_movie_paginated">Movie Paginated</string>
+    <string name="title_activity_local_sorting">Local Sorting</string>
+
+    <string name="title_menu_date_nearest">Nearest date</string>
+    <string name="title_menu_date_farthest">Farthest date</string>
+    <string name="title_menu_price_lowest">Lowest price</string>
+    <string name="title_menu_price_highest">Highest price</string>
+
+    <string name="text_button_movie_paginated">Paginated API Call</string>
+    <string name="text_button_local_sorting">Local Sorting</string>
+</resources>

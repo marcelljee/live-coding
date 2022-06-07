@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:paddingStart="@dimen/widget_padding_normal"-->
+    <!--        android:paddingTop="@dimen/repository_padding_vertical"-->
+    <!--        android:paddingEnd="@dimen/widget_padding_xlarge"-->
+    <!--        android:paddingBottom="@dimen/repository_padding_vertical">-->
+
+    <!--        <View-->
+    <!--            android:layout_width="@dimen/repository_author_avatar"-->
+    <!--            android:layout_height="@dimen/repository_author_avatar"-->
+    <!--            android:background="@drawable/ic_shimmer_background" />-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="@dimen/widget_padding_normal"-->
+    <!--            android:orientation="vertical">-->
+
+    <!--            <View-->
+    <!--                android:layout_width="@dimen/repository_name_shimmer_width"-->
+    <!--                android:layout_height="@dimen/repository_name_shimmer_height"-->
+    <!--                android:background="@drawable/ic_shimmer_background" />-->
+
+    <!--            <View-->
+    <!--                android:layout_width="@dimen/repository_description_shimmer_width"-->
+    <!--                android:layout_height="@dimen/repository_description_shimmer_height"-->
+    <!--                android:layout_marginTop="@dimen/widget_padding_normal"-->
+    <!--                android:background="@drawable/ic_shimmer_background" />-->
+    <!--        </LinearLayout>-->
+
+    <!--    </LinearLayout>-->
+
+    <!--    <View-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="@dimen/divider_height"-->
+    <!--        android:background="@color/shimmer_background" />-->
+</LinearLayout>
