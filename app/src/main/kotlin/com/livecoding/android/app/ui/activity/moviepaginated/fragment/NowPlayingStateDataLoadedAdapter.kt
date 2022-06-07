@@ -1,6 +1,7 @@
 package com.livecoding.android.app.ui.activity.moviepaginated.fragment
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -11,22 +12,24 @@ import com.livecoding.android.app.ui.ext.load
 import com.livecoding.android.app.ui.model.Movie
 
 class NowPlayingStateDataLoadedAdapter :
-    PagingDataAdapter<Movie, NowPlayingStateDataLoadedAdapter.MovieDataStateViewHolder>(DIFF_CALLBACK) {
+    PagingDataAdapter<Movie, NowPlayingStateDataLoadedAdapter.MovieDataStateViewHolder>(
+        DIFF_CALLBACK
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieDataStateViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = NowPlayingItemStateDataLoadedBinding.inflate(layoutInflater, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.now_playing_item_state_data_loaded, parent, false)
 
-        return MovieDataStateViewHolder.create(binding)
+        return MovieDataStateViewHolder.create(view)
     }
 
     override fun onBindViewHolder(holder: MovieDataStateViewHolder, position: Int) {
         holder.bindTo(getItem(position))
     }
 
-    class MovieDataStateViewHolder(
-        private val binding: NowPlayingItemStateDataLoadedBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
+    class MovieDataStateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        private val binding = NowPlayingItemStateDataLoadedBinding.bind(itemView)
 
         private var movie: Movie? = null
 
@@ -41,8 +44,8 @@ class NowPlayingStateDataLoadedAdapter :
         }
 
         companion object {
-            fun create(binding: NowPlayingItemStateDataLoadedBinding): MovieDataStateViewHolder {
-                return MovieDataStateViewHolder(binding)
+            fun create(itemView: View): MovieDataStateViewHolder {
+                return MovieDataStateViewHolder(itemView)
             }
         }
     }

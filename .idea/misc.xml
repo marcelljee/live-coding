@@ -27,6 +27,8 @@
         <entry key="app/src/main/res/layout/now_playing_item_state_load_more.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/now_playing_shimmer_data.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/shipment_content_data.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/shipment_data_content.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/shipment_item_state_data_loaded.xml" value="0.28229166666666666" />
       </map>
     </option>
   </component>
