@@ -28,10 +28,16 @@ class LocalSortingActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.no_anim, R.anim.slide_out)
+    }
+
     companion object {
         fun startActivity(activity: Activity?) {
             activity?.let {
                 it.startActivity(createIntent(it))
+                it.overridePendingTransition(R.anim.slide_in, R.anim.no_anim)
             }
         }
 
