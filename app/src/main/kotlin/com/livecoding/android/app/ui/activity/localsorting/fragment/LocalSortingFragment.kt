@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.livecoding.android.app.R
-import com.livecoding.android.app.databinding.FragmentLocalSortingBinding
+import com.livecoding.android.app.databinding.LocalSortingFragmentBinding
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -14,12 +14,12 @@ class LocalSortingFragment : DaggerFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private var _binding: FragmentLocalSortingBinding? = null
+    private var _binding: LocalSortingFragmentBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var viewModel: LocalSortingViewModel
 
-    private lateinit var localSortingDataStateAdapter: ShipmentDataStateAdapter
+    private lateinit var localSortingDataStateAdapter: ShipmentStateDataLoadedAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class LocalSortingFragment : DaggerFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLocalSortingBinding.inflate(inflater, container, false)
+        _binding = LocalSortingFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -72,9 +72,9 @@ class LocalSortingFragment : DaggerFragment() {
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(LocalSortingViewModel::class.java)
 
-        localSortingDataStateAdapter = ShipmentDataStateAdapter(viewModel.getShipments())
+        localSortingDataStateAdapter = ShipmentStateDataLoadedAdapter(viewModel.getShipments())
 
-        with(binding.rvShipmentList) {
+        with(binding.localSortingContentData.shipmentDataState) {
             val manager = LinearLayoutManager(super.getContext())
 
             layoutManager = manager

@@ -6,12 +6,12 @@
     android:padding="8dp">
 
     <include
-        android:id="@+id/movie_load_state"
-        layout="@layout/movie_shimmer_data"
+        android:id="@+id/now_playing_load_state"
+        layout="@layout/now_playing_data_shimmer"
         tools:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/movie_data_state"
+        android:id="@+id/now_playing_data_state"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"

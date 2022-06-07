@@ -39,9 +39,12 @@ class NowPlayingRemoteMediator @Inject constructor(
     ): MediatorResult {
         return try {
             when (loadType) {
-                LoadType.REFRESH -> { this.currentPage = 0 }
+                LoadType.REFRESH -> {
+                    this.currentPage = 0
+                }
                 LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
-                LoadType.APPEND -> { /* do nothing */ }
+                LoadType.APPEND -> { /* do nothing */
+                }
             }
 
             val response = remoteDataSource.fetchNowPlaying(this.currentPage + 1)

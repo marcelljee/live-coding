@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.livecoding.android.app.databinding.FragmentMoviePaginatedBinding
+import com.livecoding.android.app.databinding.MoviePaginatedFragmentBinding
 import com.livecoding.android.app.ui.ext.hide
 import com.livecoding.android.app.ui.ext.show
 import dagger.android.support.DaggerFragment
@@ -22,7 +22,7 @@ class MoviePaginatedFragment : DaggerFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private var _binding: FragmentMoviePaginatedBinding? = null
+    private var _binding: MoviePaginatedFragmentBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var viewModel: MoviePaginatedViewModel
@@ -36,7 +36,7 @@ class MoviePaginatedFragment : DaggerFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMoviePaginatedBinding.inflate(inflater, container, false)
+        _binding = MoviePaginatedFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -51,20 +51,20 @@ class MoviePaginatedFragment : DaggerFragment() {
         viewModel =
             ViewModelProvider(this, viewModelFactory).get(MoviePaginatedViewModel::class.java)
 
-        val movieDataStateAdapter = MovieDataStateAdapter()
-        movieDataStateAdapter.withLoadStateFooter(MovieLoadMoreStateAdapter())
+        val movieDataStateAdapter = NowPlayingStateDataLoadedAdapter()
+        movieDataStateAdapter.withLoadStateFooter(NowPlayingStateLoadMoreAdapter())
 
         movieDataStateAdapter.addLoadStateListener {
             if (it.refresh is LoadState.Loading) {
-                binding.movieContentData.movieLoadState.root.show()
-                binding.movieContentData.movieDataState.hide()
+                binding.moviePaginatedContentData.nowPlayingLoadState.root.show()
+                binding.moviePaginatedContentData.nowPlayingDataState.hide()
             } else {
-                binding.movieContentData.movieLoadState.root.hide()
-                binding.movieContentData.movieDataState.show()
+                binding.moviePaginatedContentData.nowPlayingLoadState.root.hide()
+                binding.moviePaginatedContentData.nowPlayingDataState.show()
             }
         }
 
-        with(binding.movieContentData.movieDataState) {
+        with(binding.moviePaginatedContentData.nowPlayingDataState) {
             val manager = LinearLayoutManager(super.getContext())
 
             layoutManager = manager

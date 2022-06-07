@@ -10,14 +10,9 @@
         android:layout_height="match_parent">
 
         <include
-            android:id="@+id/movie_content_data"
-            layout="@layout/movie_content_data"
+            android:id="@+id/local_sorting_content_data"
+            layout="@layout/shipment_data_content"
             tools:visibility="visible" />
-
-        <!--        <include-->
-        <!--            android:id="@+id/trending_content_error"-->
-        <!--            layout="@layout/trending_content_error_nointernet"-->
-        <!--            tools:visibility="gone" />-->
 
     </FrameLayout>
 

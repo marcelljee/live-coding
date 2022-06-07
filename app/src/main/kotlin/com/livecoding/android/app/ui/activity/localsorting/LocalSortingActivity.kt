@@ -6,17 +6,17 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.livecoding.android.app.R
-import com.livecoding.android.app.databinding.ActivityLocalSortingBinding
+import com.livecoding.android.app.databinding.LocalSortingActivityBinding
 import com.livecoding.android.app.ui.activity.localsorting.fragment.LocalSortingFragment
 
 class LocalSortingActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLocalSortingBinding
+    private lateinit var binding: LocalSortingActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityLocalSortingBinding.inflate(layoutInflater)
+        binding = LocalSortingActivityBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)

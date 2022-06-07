@@ -6,16 +6,16 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.livecoding.android.app.R
-import com.livecoding.android.app.databinding.ActivityMoviePaginatedBinding
+import com.livecoding.android.app.databinding.MoviePaginatedActivityBinding
 import com.livecoding.android.app.ui.activity.moviepaginated.fragment.MoviePaginatedFragment
 
 class MoviePaginatedActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMoviePaginatedBinding
+    private lateinit var binding: MoviePaginatedActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMoviePaginatedBinding.inflate(layoutInflater)
+        binding = MoviePaginatedActivityBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)

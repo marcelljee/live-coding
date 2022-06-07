@@ -6,16 +6,16 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.livecoding.android.app.R
-import com.livecoding.android.app.databinding.ItemMovieDataStateBinding
+import com.livecoding.android.app.databinding.NowPlayingItemStateDataLoadedBinding
 import com.livecoding.android.app.ui.ext.load
 import com.livecoding.android.app.ui.model.Movie
 
-class MovieDataStateAdapter :
-    PagingDataAdapter<Movie, MovieDataStateAdapter.MovieDataStateViewHolder>(DIFF_CALLBACK) {
+class NowPlayingStateDataLoadedAdapter :
+    PagingDataAdapter<Movie, NowPlayingStateDataLoadedAdapter.MovieDataStateViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieDataStateViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = ItemMovieDataStateBinding.inflate(layoutInflater, parent, false)
+        val binding = NowPlayingItemStateDataLoadedBinding.inflate(layoutInflater, parent, false)
 
         return MovieDataStateViewHolder.create(binding)
     }
@@ -25,7 +25,7 @@ class MovieDataStateAdapter :
     }
 
     class MovieDataStateViewHolder(
-        private val binding: ItemMovieDataStateBinding
+        private val binding: NowPlayingItemStateDataLoadedBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private var movie: Movie? = null
@@ -41,7 +41,7 @@ class MovieDataStateAdapter :
         }
 
         companion object {
-            fun create(binding: ItemMovieDataStateBinding): MovieDataStateViewHolder {
+            fun create(binding: NowPlayingItemStateDataLoadedBinding): MovieDataStateViewHolder {
                 return MovieDataStateViewHolder(binding)
             }
         }

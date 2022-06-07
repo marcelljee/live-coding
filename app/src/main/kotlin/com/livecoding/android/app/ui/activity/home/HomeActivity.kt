@@ -3,16 +3,16 @@ package com.livecoding.android.app.ui.activity.home
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.livecoding.android.app.R
-import com.livecoding.android.app.databinding.ActivityHomeBinding
+import com.livecoding.android.app.databinding.HomeActivityBinding
 import com.livecoding.android.app.ui.activity.home.fragment.HomeFragment
 
 class HomeActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityHomeBinding
+    private lateinit var binding: HomeActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityHomeBinding.inflate(layoutInflater)
+        binding = HomeActivityBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
 

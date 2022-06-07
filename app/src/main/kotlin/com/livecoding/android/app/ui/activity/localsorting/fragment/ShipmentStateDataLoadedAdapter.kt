@@ -3,16 +3,16 @@ package com.livecoding.android.app.ui.activity.localsorting.fragment
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.livecoding.android.app.databinding.ItemShipmentDataStateBinding
+import com.livecoding.android.app.databinding.ShipmentItemStateDataLoadedBinding
 import com.livecoding.android.app.ui.model.Shipment
 
-class ShipmentDataStateAdapter(
+class ShipmentStateDataLoadedAdapter(
     private var shipmentList: List<Shipment>
-) : RecyclerView.Adapter<ShipmentDataStateAdapter.ShipmentDataStateViewHolder>() {
+) : RecyclerView.Adapter<ShipmentStateDataLoadedAdapter.ShipmentDataStateViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShipmentDataStateViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = ItemShipmentDataStateBinding.inflate(layoutInflater, parent, false)
+        val binding = ShipmentItemStateDataLoadedBinding.inflate(layoutInflater, parent, false)
 
         return ShipmentDataStateViewHolder.create(binding)
     }
@@ -50,7 +50,7 @@ class ShipmentDataStateAdapter(
     }
 
     class ShipmentDataStateViewHolder(
-        private val binding: ItemShipmentDataStateBinding
+        private val binding: ShipmentItemStateDataLoadedBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private var shipment: Shipment? = null
@@ -67,7 +67,7 @@ class ShipmentDataStateAdapter(
         }
 
         companion object {
-            fun create(binding: ItemShipmentDataStateBinding): ShipmentDataStateViewHolder {
+            fun create(binding: ShipmentItemStateDataLoadedBinding): ShipmentDataStateViewHolder {
                 return ShipmentDataStateViewHolder(binding)
             }
         }

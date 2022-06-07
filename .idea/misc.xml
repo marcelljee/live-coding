@@ -4,12 +4,29 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_shimmer_background.xml" value="0.135" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/activity_local_sorting.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/activity_movie_paginated.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_local_sorting.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_movie_paginated.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/home_activity.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/item_movie_data_state.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/item_movie_load_init_state.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/item_movie_load_state.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/local_sorting_activity.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/local_sorting_fragment.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/movie_content_data.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/movie_paginated_activity.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/movie_paginated_fragment.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/movie_shimmer_data.xml" value="0.34640909830729183" />
+        <entry key="app/src/main/res/layout/now_playing_content_data.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/now_playing_data_content.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/now_playing_item_state_data_loaded.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/now_playing_item_state_load_more.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/now_playing_shimmer_data.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/shipment_content_data.xml" value="0.28229166666666666" />
       </map>
     </option>
   </component>
