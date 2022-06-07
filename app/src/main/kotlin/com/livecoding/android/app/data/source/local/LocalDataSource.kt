@@ -41,12 +41,12 @@ class LocalDataSource @Inject constructor(
         nowPlayingDao.clearAll()
     }
 
-    fun getLastUpdated(): Long {
-        return preferencesManager.getLastUpdated()
+    fun getNowPlayingDbLastUpdated(): Long {
+        return preferencesManager.getNowPlayingDbLastUpdated()
     }
 
-    fun setLastUpdated(timeMillis: Long) {
-        preferencesManager.setLastUpdated(timeMillis)
+    fun setNowPlayingDbLastUpdated(timeMillis: Long) {
+        preferencesManager.setNowPlayingDbLastUpdated(timeMillis)
     }
 
     fun getShipments(): List<Shipment> {

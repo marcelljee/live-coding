@@ -21,18 +21,14 @@ class NowPlayingRemoteMediator @Inject constructor(
     private val appDatabase: AppDatabase
 ) : RemoteMediator<Int, NowPlayingEntity>() {
 
-    private var currentPage = 1
+    private var currentPage = 0
 
     override suspend fun initialize(): InitializeAction {
         val cacheTimeout = TimeUnit.MILLISECONDS.convert(1, TimeUnit.HOURS)
-        return if (System.currentTimeMillis() - localDataSource.getLastUpdated() >= cacheTimeout) {
-            // Cached data is up-to-date, so there is no need to re-fetch
-            // from the network.
+
+        return if (System.currentTimeMillis() - localDataSource.getNowPlayingDbLastUpdated() <= cacheTimeout) {
             InitializeAction.SKIP_INITIAL_REFRESH
         } else {
-            // Need to refresh cached data from network; returning
-            // LAUNCH_INITIAL_REFRESH here will also block RemoteMediator's
-            // APPEND and PREPEND from running until REFRESH succeeds.
             InitializeAction.LAUNCH_INITIAL_REFRESH
         }
     }
@@ -42,33 +38,26 @@ class NowPlayingRemoteMediator @Inject constructor(
         state: PagingState<Int, NowPlayingEntity>
     ): MediatorResult {
         return try {
-            // Suspending network load via Retrofit. This doesn't need to be
-            // wrapped in a withContext(Dispatcher.IO) { ... } block since
-            // Retrofit's Coroutine CallAdapter dispatches on a worker
-            // thread.
-            val response = remoteDataSource.fetchNowPlaying(currentPage + 1)
+            when (loadType) {
+                LoadType.REFRESH -> { this.currentPage = 0 }
+                LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
+                LoadType.APPEND -> { /* do nothing */ }
+            }
 
-            if (response.page != null) {
-                appDatabase.withTransaction {
-                    if (loadType == LoadType.REFRESH) {
-                        localDataSource.deleteAllNowPlayings()
-                    }
+            val response = remoteDataSource.fetchNowPlaying(this.currentPage + 1)
 
-                    this.currentPage = response.page
-
-                    // Insert new users into database, which invalidates the
-                    // current PagingData, allowing Paging to present the updates
-                    // in the DB.
-                    localDataSource.storeNowPlayings(response.results)
-                    localDataSource.setLastUpdated(System.currentTimeMillis())
+            appDatabase.withTransaction {
+                if (loadType == LoadType.REFRESH) {
+                    localDataSource.deleteAllNowPlayings()
                 }
 
-                MediatorResult.Success(
-                    endOfPaginationReached = this.currentPage == response.totalPages
-                )
-            } else {
-                MediatorResult.Error(NullPointerException("page is null"))
+                this.currentPage = response.page ?: (this.currentPage + 1)
+
+                localDataSource.storeNowPlayings(response.results)
+                localDataSource.setNowPlayingDbLastUpdated(System.currentTimeMillis())
             }
+
+            MediatorResult.Success(endOfPaginationReached = response.page == response.totalPages)
         } catch (e: IOException) {
             MediatorResult.Error(e)
         } catch (e: HttpException) {

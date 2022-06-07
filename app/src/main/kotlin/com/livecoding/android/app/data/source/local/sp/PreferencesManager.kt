@@ -4,18 +4,18 @@ import android.content.SharedPreferences
 import javax.inject.Inject
 import javax.inject.Singleton
 
-private const val KEY_LAST_UPDATED =
-    "com.livecoding.android.app.data.source.local.sp.LAST_UPDATED"
+private const val KEY_NOW_PLAYING_LAST_UPDATED =
+    "com.livecoding.android.app.data.source.local.sp.NOW_PLAYING_LAST_UPDATED"
 
 @Singleton
 class PreferencesManager @Inject constructor(
     private val sharedPreferences: SharedPreferences
 ) {
-    fun getLastUpdated(): Long {
-        return sharedPreferences.getLong(KEY_LAST_UPDATED, 0)
+    fun getNowPlayingDbLastUpdated(): Long {
+        return sharedPreferences.getLong(KEY_NOW_PLAYING_LAST_UPDATED, 0)
     }
 
-    fun setLastUpdated(timestamp: Long) {
-        sharedPreferences.edit().putLong(KEY_LAST_UPDATED, timestamp).apply()
+    fun setNowPlayingDbLastUpdated(timestamp: Long) {
+        sharedPreferences.edit().putLong(KEY_NOW_PLAYING_LAST_UPDATED, timestamp).apply()
     }
 }
