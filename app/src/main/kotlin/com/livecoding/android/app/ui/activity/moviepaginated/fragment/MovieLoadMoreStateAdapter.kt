@@ -5,16 +5,16 @@ import android.view.ViewGroup
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.livecoding.android.app.databinding.ItemMovieLoadStateBinding
+import com.livecoding.android.app.databinding.ItemMovieLoadMoreStateBinding
 
-class MovieLoadStateAdapter : LoadStateAdapter<MovieLoadStateAdapter.MovieLoadStateViewHolder>() {
+class MovieLoadMoreStateAdapter : LoadStateAdapter<MovieLoadMoreStateAdapter.MovieLoadStateViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         loadState: LoadState
     ): MovieLoadStateViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = ItemMovieLoadStateBinding.inflate(layoutInflater, parent, false)
+        val binding = ItemMovieLoadMoreStateBinding.inflate(layoutInflater, parent, false)
 
         return MovieLoadStateViewHolder.create(binding)
     }
@@ -24,11 +24,11 @@ class MovieLoadStateAdapter : LoadStateAdapter<MovieLoadStateAdapter.MovieLoadSt
     }
 
     class MovieLoadStateViewHolder(
-        private val binding: ItemMovieLoadStateBinding
+        private val binding: ItemMovieLoadMoreStateBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         companion object {
-            fun create(binding: ItemMovieLoadStateBinding): MovieLoadStateViewHolder {
+            fun create(binding: ItemMovieLoadMoreStateBinding): MovieLoadStateViewHolder {
                 return MovieLoadStateViewHolder(binding)
             }
         }

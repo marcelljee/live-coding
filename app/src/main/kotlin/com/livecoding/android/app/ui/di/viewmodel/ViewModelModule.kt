@@ -17,7 +17,7 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(MoviePaginatedViewModel::class)
-    internal abstract fun bindMoviePaginatedViewModel(homeViewModel: MoviePaginatedViewModel): ViewModel
+    internal abstract fun bindMoviePaginatedViewModel(moviePaginatedViewModel: MoviePaginatedViewModel): ViewModel
 
     @Binds
     @IntoMap

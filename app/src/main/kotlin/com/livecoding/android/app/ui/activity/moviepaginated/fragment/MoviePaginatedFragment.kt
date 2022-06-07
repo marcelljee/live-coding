@@ -6,10 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.livecoding.android.app.databinding.FragmentMoviePaginatedBinding
+import com.livecoding.android.app.ui.ext.hide
+import com.livecoding.android.app.ui.ext.show
 import dagger.android.support.DaggerFragment
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -48,9 +52,19 @@ class MoviePaginatedFragment : DaggerFragment() {
             ViewModelProvider(this, viewModelFactory).get(MoviePaginatedViewModel::class.java)
 
         val movieDataStateAdapter = MovieDataStateAdapter()
-        movieDataStateAdapter.withLoadStateFooter(MovieLoadStateAdapter())
+        movieDataStateAdapter.withLoadStateFooter(MovieLoadMoreStateAdapter())
 
-        with(binding.movieContentData.rvMovieList) {
+        movieDataStateAdapter.addLoadStateListener {
+            if (it.refresh is LoadState.Loading) {
+                binding.movieContentData.movieLoadState.root.show()
+                binding.movieContentData.movieDataState.hide()
+            } else {
+                binding.movieContentData.movieLoadState.root.hide()
+                binding.movieContentData.movieDataState.show()
+            }
+        }
+
+        with(binding.movieContentData.movieDataState) {
             val manager = LinearLayoutManager(super.getContext())
 
             layoutManager = manager
@@ -60,6 +74,7 @@ class MoviePaginatedFragment : DaggerFragment() {
         }
 
         activity?.lifecycleScope?.launch {
+            delay(5000) // Delay loading data to showcase shimmering effect
             viewModel.nowPlayingMovies.collectLatest { pagingData ->
                 movieDataStateAdapter.submitData(pagingData)
             }
