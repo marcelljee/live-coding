@@ -61,7 +61,13 @@ class MoviePaginatedFragment : DaggerFragment() {
             } else {
                 binding.moviePaginatedContentData.nowPlayingLoadState.root.hide()
                 binding.moviePaginatedContentData.nowPlayingDataState.show()
+
+                binding.moviePaginatedDataRefresh.isRefreshing = false
             }
+        }
+
+        binding.moviePaginatedDataRefresh.setOnRefreshListener {
+            movieDataStateAdapter.refresh()
         }
 
         with(binding.moviePaginatedContentData.nowPlayingDataState) {

@@ -21,7 +21,7 @@ class NowPlayingRemoteMediator @Inject constructor(
     private val appDatabase: AppDatabase
 ) : RemoteMediator<Int, NowPlayingEntity>() {
 
-    private var currentPage = 0
+    private var currentPage = 1
 
     override suspend fun initialize(): InitializeAction {
         val cacheTimeout = TimeUnit.MILLISECONDS.convert(1, TimeUnit.HOURS)
@@ -39,22 +39,19 @@ class NowPlayingRemoteMediator @Inject constructor(
     ): MediatorResult {
         return try {
             when (loadType) {
-                LoadType.REFRESH -> {
-                    this.currentPage = 0
-                }
+                LoadType.REFRESH -> this.currentPage = 1
                 LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
-                LoadType.APPEND -> { /* do nothing */
-                }
+                LoadType.APPEND -> this.currentPage++
             }
 
-            val response = remoteDataSource.fetchNowPlaying(this.currentPage + 1)
+            val response = remoteDataSource.fetchNowPlaying(this.currentPage)
 
             appDatabase.withTransaction {
                 if (loadType == LoadType.REFRESH) {
                     localDataSource.deleteAllNowPlayings()
                 }
 
-                this.currentPage = response.page ?: (this.currentPage + 1)
+                this.currentPage = response.page ?: this.currentPage
 
                 localDataSource.storeNowPlayings(response.results)
                 localDataSource.setNowPlayingDbLastUpdated(System.currentTimeMillis())
