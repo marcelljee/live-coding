@@ -2,14 +2,14 @@ package com.livecoding.android.app.ui.di
 
 import com.livecoding.android.app.data.source.remote.RemoteDataSource
 import com.livecoding.android.app.data.source.remote.api.service.MovieService
+import com.livecoding.android.app.ui.di.scope.ApplicationScope
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
 
 @Module
 class RemoteDataSourceModule {
 
-    @Singleton
+    @ApplicationScope
     @Provides
     fun provideRemoteDataSourceModule(
         movieService: MovieService

@@ -7,10 +7,10 @@ import com.livecoding.android.app.data.source.local.db.dao.NowPlayingDao
 import com.livecoding.android.app.data.source.local.db.entity.NowPlayingEntity
 import com.livecoding.android.app.data.source.local.json.ShipmentJsonFileManager
 import com.livecoding.android.app.data.source.local.sp.PreferencesManager
+import com.livecoding.android.app.ui.di.scope.ApplicationScope
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
+@ApplicationScope
 class LocalDataSource @Inject constructor(
     private val nowPlayingDao: NowPlayingDao,
     private val preferencesManager: PreferencesManager,

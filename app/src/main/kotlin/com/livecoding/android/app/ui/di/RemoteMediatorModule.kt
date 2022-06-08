@@ -4,15 +4,15 @@ import com.livecoding.android.app.data.NowPlayingRemoteMediator
 import com.livecoding.android.app.data.source.local.LocalDataSource
 import com.livecoding.android.app.data.source.local.db.AppDatabase
 import com.livecoding.android.app.data.source.remote.RemoteDataSource
+import com.livecoding.android.app.ui.di.scope.ApplicationScope
 import dagger.Module
 import dagger.Provides
 import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
 
 @Module
 class RemoteMediatorModule {
 
-    @Singleton
+    @ApplicationScope
     @Provides
     fun provideNowPlayingRemoteMediator(
         localDataSource: LocalDataSource,

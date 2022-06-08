@@ -12,7 +12,6 @@ import com.livecoding.android.app.data.source.remote.RemoteDataSource
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
-import javax.inject.Singleton
 
 @OptIn(ExperimentalPagingApi::class)
 class NowPlayingRemoteMediator @Inject constructor(

@@ -4,7 +4,6 @@ import com.livecoding.android.app.data.model.Movie
 import com.livecoding.android.app.data.model.NowPlaying
 import com.livecoding.android.app.data.source.remote.api.service.MovieService
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class RemoteDataSource @Inject constructor(
     private val movieService: MovieService,

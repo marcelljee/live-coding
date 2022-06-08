@@ -3,10 +3,10 @@ package com.livecoding.android.app.data.source.local.json
 import com.google.gson.reflect.TypeToken
 import com.livecoding.android.app.data.source.local.assets.AssetsManager
 import com.livecoding.android.app.data.source.local.json.deserializer.ShipmentDeserializer
+import com.livecoding.android.app.ui.di.scope.ApplicationScope
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
+@ApplicationScope
 class ShipmentJsonFileManager @Inject constructor(
     private val assetsManager: AssetsManager,
     private val jsonParser: JsonParser

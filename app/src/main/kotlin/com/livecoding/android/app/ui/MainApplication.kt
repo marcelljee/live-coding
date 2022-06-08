@@ -1,7 +1,7 @@
 package com.livecoding.android.app.ui
 
 import com.facebook.stetho.Stetho
-import com.livecoding.android.app.ui.di.DaggerAppComponent
+import com.livecoding.android.app.ui.di.DaggerApplicationComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 
@@ -12,6 +12,6 @@ class MainApplication : DaggerApplication() {
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerAppComponent.factory().create(this)
+        return DaggerApplicationComponent.factory().create(this)
     }
 }

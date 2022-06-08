@@ -1,11 +1,11 @@
 package com.livecoding.android.app.data.source.local.json
 
 import com.google.gson.Gson
+import com.livecoding.android.app.ui.di.scope.ApplicationScope
 import java.lang.reflect.Type
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
+@ApplicationScope
 class JsonParser @Inject constructor(
     private val gson: Gson
 ) {

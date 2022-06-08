@@ -1,12 +1,12 @@
 package com.livecoding.android.app.data.source.local.assets
 
 import com.livecoding.android.app.ui.MainApplication
+import com.livecoding.android.app.ui.di.scope.ApplicationScope
 import java.io.IOException
 import java.io.InputStream
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
+@ApplicationScope
 class AssetsManager @Inject constructor(
     private val application: MainApplication
 ) {
