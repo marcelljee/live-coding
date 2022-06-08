@@ -9,16 +9,14 @@ import com.livecoding.android.app.data.source.local.LocalDataSource
 import com.livecoding.android.app.data.source.local.db.AppDatabase
 import com.livecoding.android.app.data.source.local.db.entity.NowPlayingEntity
 import com.livecoding.android.app.data.source.remote.RemoteDataSource
-import com.livecoding.android.app.ui.di.qualifier.CacheTimeoutQualifier
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
 @OptIn(ExperimentalPagingApi::class)
 class NowPlayingRemoteMediator @Inject constructor(
-    @CacheTimeoutQualifier private val cacheTimeoutMillis: Long,
+    private val cacheTimeoutMillis: Long,
     private val localDataSource: LocalDataSource,
     private val remoteDataSource: RemoteDataSource,
     private val appDatabase: AppDatabase

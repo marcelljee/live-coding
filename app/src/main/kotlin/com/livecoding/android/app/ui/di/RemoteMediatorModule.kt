@@ -1,6 +1,9 @@
 package com.livecoding.android.app.ui.di
 
-import com.livecoding.android.app.ui.di.qualifier.CacheTimeoutQualifier
+import com.livecoding.android.app.data.NowPlayingRemoteMediator
+import com.livecoding.android.app.data.source.local.LocalDataSource
+import com.livecoding.android.app.data.source.local.db.AppDatabase
+import com.livecoding.android.app.data.source.remote.RemoteDataSource
 import dagger.Module
 import dagger.Provides
 import java.util.concurrent.TimeUnit
@@ -11,9 +14,19 @@ class RemoteMediatorModule {
 
     @Singleton
     @Provides
-    @CacheTimeoutQualifier
-    fun provideCacheTimeout(): Long {
-        return TimeUnit.MILLISECONDS.convert(1, TimeUnit.HOURS)
+    fun provideNowPlayingRemoteMediator(
+        localDataSource: LocalDataSource,
+        remoteDataSource: RemoteDataSource,
+        appDatabase: AppDatabase
+    ): NowPlayingRemoteMediator {
+        val cacheTimeout = TimeUnit.MILLISECONDS.convert(1, TimeUnit.HOURS)
+
+        return NowPlayingRemoteMediator(
+            cacheTimeout,
+            localDataSource,
+            remoteDataSource,
+            appDatabase
+        )
     }
 
 }

@@ -15,13 +15,15 @@ import javax.inject.Singleton
     modules = [
         AndroidInjectionModule::class,
         ViewModelModule::class,
-        NowPlayingDaoModule::class,
+        AppDatabaseDaoModule::class,
         MovieServiceModule::class,
         SharedPreferencesModule::class,
         HomeFragmentModule::class,
         LocalSortingFragmentModule::class,
         MoviePaginatedFragmentModule::class,
-        RemoteMediatorModule::class
+        RemoteMediatorModule::class,
+        GsonModule::class,
+        RemoteDataSourceModule::class
     ]
 )
 interface AppComponent : AndroidInjector<MainApplication> {
