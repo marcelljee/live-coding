@@ -13,7 +13,6 @@ import com.livecoding.android.app.databinding.MoviePaginatedFragmentBinding
 import com.livecoding.android.app.ui.ext.hide
 import com.livecoding.android.app.ui.ext.show
 import dagger.android.support.DaggerFragment
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -80,7 +79,6 @@ class MoviePaginatedFragment : DaggerFragment() {
         }
 
         activity?.lifecycleScope?.launch {
-            delay(5000) // Delay loading data to showcase shimmering effect
             viewModel.nowPlayingMovies.collectLatest { pagingData ->
                 movieDataStateAdapter.submitData(pagingData)
             }

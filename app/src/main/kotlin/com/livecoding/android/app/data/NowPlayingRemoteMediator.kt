@@ -9,13 +9,16 @@ import com.livecoding.android.app.data.source.local.LocalDataSource
 import com.livecoding.android.app.data.source.local.db.AppDatabase
 import com.livecoding.android.app.data.source.local.db.entity.NowPlayingEntity
 import com.livecoding.android.app.data.source.remote.RemoteDataSource
+import com.livecoding.android.app.ui.di.qualifier.CacheTimeoutQualifier
 import retrofit2.HttpException
 import java.io.IOException
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 @OptIn(ExperimentalPagingApi::class)
 class NowPlayingRemoteMediator @Inject constructor(
+    @CacheTimeoutQualifier private val cacheTimeoutMillis: Long,
     private val localDataSource: LocalDataSource,
     private val remoteDataSource: RemoteDataSource,
     private val appDatabase: AppDatabase
@@ -24,9 +27,7 @@ class NowPlayingRemoteMediator @Inject constructor(
     private var currentPage = 1
 
     override suspend fun initialize(): InitializeAction {
-        val cacheTimeout = TimeUnit.MILLISECONDS.convert(1, TimeUnit.HOURS)
-
-        return if (System.currentTimeMillis() - localDataSource.getNowPlayingDbLastUpdated() <= cacheTimeout) {
+        return if (System.currentTimeMillis() - localDataSource.getNowPlayingDbLastUpdated() <= cacheTimeoutMillis) {
             InitializeAction.SKIP_INITIAL_REFRESH
         } else {
             InitializeAction.LAUNCH_INITIAL_REFRESH

@@ -20,7 +20,8 @@ import javax.inject.Singleton
         SharedPreferencesModule::class,
         HomeFragmentModule::class,
         LocalSortingFragmentModule::class,
-        MoviePaginatedFragmentModule::class
+        MoviePaginatedFragmentModule::class,
+        RemoteMediatorModule::class
     ]
 )
 interface AppComponent : AndroidInjector<MainApplication> {
